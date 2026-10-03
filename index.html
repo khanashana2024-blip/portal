@@ -1,0 +1,2614 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hassan's Anime | Ultra-Premium Streaming & Power Breakdown Realm</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       1. CUSTOM PROPERTIES & RESETS
+       ========================================================================== */
+    :root {
+      --bg-main: #0b0c10;
+      --bg-card: rgba(17, 20, 29, 0.75);
+      --bg-card-hover: rgba(26, 31, 46, 0.88);
+      --bg-glass: rgba(11, 12, 16, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(168, 85, 247, 0.4);
+      
+      /* Vibrant Anime Accent Colors */
+      --accent-purple: #a855f7;
+      --accent-purple-glow: rgba(168, 85, 247, 0.5);
+      --accent-crimson: #ef4444;
+      --accent-crimson-glow: rgba(239, 68, 68, 0.5);
+      --accent-gold: #eab308;
+      --accent-gold-glow: rgba(234, 179, 8, 0.5);
+      --accent-cyan: #06b6d4;
+      
+      /* Active Theme Dynamic Variable */
+      --aura-color: #a855f7;
+      --aura-glow: rgba(168, 85, 247, 0.4);
+      --aura-gradient: linear-gradient(135deg, #a855f7, #ec4899);
+
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+
+      --font-heading: 'Outfit', sans-serif;
+      --font-title: 'Cinzel', serif;
+      --font-code: 'JetBrains Mono', monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Theme Variants */
+    body.theme-purple {
+      --aura-color: #a855f7;
+      --aura-glow: rgba(168, 85, 247, 0.45);
+      --aura-gradient: linear-gradient(135deg, #a855f7, #c084fc, #ec4899);
+      --border-glow: rgba(168, 85, 247, 0.5);
+    }
+    body.theme-crimson {
+      --aura-color: #ef4444;
+      --aura-glow: rgba(239, 68, 68, 0.45);
+      --aura-gradient: linear-gradient(135deg, #ef4444, #f97316, #dc2626);
+      --border-glow: rgba(239, 68, 68, 0.5);
+    }
+    body.theme-gold {
+      --aura-color: #eab308;
+      --aura-glow: rgba(234, 179, 8, 0.45);
+      --aura-gradient: linear-gradient(135deg, #eab308, #f59e0b, #fbbf24);
+      --border-glow: rgba(234, 179, 8, 0.5);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(239, 68, 68, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(234, 179, 8, 0.05) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07080b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-full);
+      border: 2px solid #07080b;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--aura-color);
+    }
+
+    /* Canvas Ambient Background */
+    #aura-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* Helper Utilities */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .gradient-text {
+      background: var(--aura-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
+
+    .glow-effect {
+      text-shadow: 0 0 15px var(--aura-glow), 0 0 30px var(--aura-glow);
+    }
+
+    /* ==========================================================================
+       2. HEADER & NAVIGATION BAR
+       ========================================================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .logo-emblem {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--aura-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-title);
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: #fff;
+      box-shadow: 0 0 20px var(--aura-glow);
+      transition: transform var(--transition-bounce);
+    }
+
+    .logo-container:hover .logo-emblem {
+      transform: rotate(12deg) scale(1.1);
+    }
+
+    .logo-text {
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .logo-sub {
+      font-size: 0.65rem;
+      color: var(--aura-color);
+      letter-spacing: 2.5px;
+      font-family: var(--font-code);
+      display: block;
+      margin-top: -3px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      transition: all var(--transition-fast);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--aura-gradient);
+      transition: width var(--transition-fast);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #fff;
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Aura Selector Buttons */
+    .aura-picker {
+      display: flex;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+      gap: 4px;
+    }
+
+    .aura-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform var(--transition-fast), border-color var(--transition-fast);
+      position: relative;
+    }
+
+    .aura-btn[data-aura="purple"] { background: var(--accent-purple); }
+    .aura-btn[data-aura="crimson"] { background: var(--accent-crimson); }
+    .aura-btn[data-aura="gold"] { background: var(--accent-gold); }
+
+    .aura-btn.active {
+      border-color: #fff;
+      transform: scale(1.15);
+      box-shadow: 0 0 10px currentColor;
+    }
+
+    .aura-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .vault-btn {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all var(--transition-fast);
+    }
+
+    .vault-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--aura-color);
+      box-shadow: 0 0 15px var(--aura-glow);
+    }
+
+    .badge-count {
+      background: var(--aura-color);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      line-height: 1;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Mobile Drawer Nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.5rem;
+      z-index: 99;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION
+       ========================================================================== */
+    .hero {
+      position: relative;
+      padding: 5rem 0 4rem 0;
+      overflow: hidden;
+    }
+
+    .hero-wrapper {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid var(--border-glow);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--aura-color);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: pulseGlow 3s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 10px rgba(168, 85, 247, 0.2); }
+      50% { box-shadow: 0 0 25px var(--aura-glow); }
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    /* Search Bar with Energetic Focus */
+    .search-box {
+      position: relative;
+      max-width: 540px;
+      margin-bottom: 2rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 18px 20px 18px 56px;
+      background: rgba(18, 22, 32, 0.85);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      color: #fff;
+      font-size: 1.05rem;
+      outline: none;
+      transition: all var(--transition-normal);
+      font-family: var(--font-heading);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .search-input:focus {
+      border-color: var(--aura-color);
+      box-shadow: 0 0 30px var(--aura-glow), inset 0 0 10px rgba(168, 85, 247, 0.15);
+      background: rgba(22, 27, 40, 0.95);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      pointer-events: none;
+      transition: color var(--transition-fast);
+    }
+
+    .search-input:focus + .search-icon {
+      color: var(--aura-color);
+    }
+
+    /* Hero Tags Filter */
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .tag-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-weight: 700;
+      margin-right: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tag-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      user-select: none;
+    }
+
+    .tag-pill:hover, .tag-pill.active {
+      background: var(--aura-color);
+      color: #fff;
+      border-color: var(--aura-color);
+      box-shadow: 0 0 15px var(--aura-glow);
+    }
+
+    /* Hero Featured Portal Banner */
+    .hero-banner-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-glow);
+      background: var(--bg-card);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--aura-glow);
+      transition: transform var(--transition-bounce), box-shadow var(--transition-normal);
+    }
+
+    .hero-banner-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 45px var(--aura-glow);
+    }
+
+    .hero-banner-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85) contrast(1.1);
+      transition: transform var(--transition-normal);
+    }
+
+    .hero-banner-card:hover .hero-banner-img {
+      transform: scale(1.05);
+    }
+
+    .hero-banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 12, 16, 0.1) 0%, rgba(11, 12, 16, 0.95) 90%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+
+    .hero-banner-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-heading);
+    }
+
+    .hero-banner-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .meta-badge {
+      background: var(--aura-color);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    /* Quick Hero Metrics */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .stat-box {
+      text-align: left;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--aura-color);
+      font-family: var(--font-code);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    /* ==========================================================================
+       4. SECTION HEADINGS
+       ========================================================================== */
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-tag {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--aura-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      display: block;
+      font-family: var(--font-code);
+    }
+
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ==========================================================================
+       5. ANIME SHOWCASE CARDS SECTION
+       ========================================================================== */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .anime-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-bounce), box-shadow var(--transition-normal), border-color var(--transition-normal);
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s forwards ease-out;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .anime-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--aura-color);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8), 0 0 25px var(--aura-glow);
+      background: var(--bg-card-hover);
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: #11141c;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-normal);
+    }
+
+    .anime-card:hover .card-img {
+      transform: scale(1.08);
+    }
+
+    .card-overlay-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(17, 20, 29, 0.95) 100%);
+    }
+
+    .card-rating-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(11, 12, 16, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #facc15;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      z-index: 2;
+    }
+
+    .card-fav-btn {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(11, 12, 16, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      z-index: 2;
+      transition: all var(--transition-fast);
+    }
+
+    .card-fav-btn:hover, .card-fav-btn.active {
+      background: var(--accent-crimson);
+      color: #fff;
+      border-color: var(--accent-crimson);
+      transform: scale(1.1);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-meta-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .anime-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      line-height: 1.25;
+    }
+
+    .anime-year-studio {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .genre-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .genre-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .anime-synopsis {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 1.2rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Power System Summary Box */
+    .power-summary-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-left: 3px solid var(--aura-color);
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 1.5rem;
+      margin-top: auto;
+    }
+
+    .power-summary-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--aura-color);
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .power-summary-text {
+      font-size: 0.82rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    /* Primary Interactive Card Button */
+    .btn-breakdown {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glow);
+      color: #fff;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-breakdown:hover {
+      background: var(--aura-gradient);
+      border-color: transparent;
+      box-shadow: 0 0 20px var(--aura-glow);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       6. TOP CHARACTERS & POWER TIER LIST SECTION
+       ========================================================================== */
+    .characters-section {
+      padding: 4rem 0;
+      position: relative;
+    }
+
+    .character-filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tier-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .tier-btn.active, .tier-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--aura-color);
+      color: #fff;
+    }
+
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .char-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      position: relative;
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .char-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--aura-color);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.8), 0 0 20px var(--aura-glow);
+    }
+
+    .char-avatar-wrapper {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      padding: 3px;
+      background: var(--aura-gradient);
+      box-shadow: 0 0 15px var(--aura-glow);
+    }
+
+    .char-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #181b26;
+    }
+
+    .char-tier-tag {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      background: #000;
+      border: 2px solid var(--aura-color);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-code);
+    }
+
+    .char-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .char-anime {
+      font-size: 0.8rem;
+      color: var(--aura-color);
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .char-quote {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 8px 12px;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    /* Power Bars */
+    .stat-bars {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .stat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+
+    }
+
+    .stat-name {
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .stat-bar-bg {
+      flex-grow: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+      margin: 0 10px;
+      overflow: hidden;
+    }
+
+    .stat-bar-fill {
+      height: 100%;
+      background: var(--aura-gradient);
+      border-radius: 3px;
+      transition: width 1s ease-out;
+    }
+
+    .stat-val {
+      font-family: var(--font-code);
+      font-weight: 700;
+      color: #fff;
+      width: 28px;
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       7. POWER SYSTEM MATRIX COMPARATOR SECTION
+       ========================================================================== */
+    .matrix-section {
+      padding: 4rem 0;
+    }
+
+    .matrix-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .matrix-selectors {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .matrix-select-group label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .matrix-select {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(11, 12, 16, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .matrix-vs {
+      text-align: center;
+      font-family: var(--font-title);
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--aura-color);
+    }
+
+    .matrix-comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .matrix-column {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+
+    .matrix-column-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .matrix-sys-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--aura-color);
+    }
+
+    .matrix-sys-anime {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .matrix-feature {
+      margin-bottom: 1rem;
+    }
+
+    .matrix-feature-label {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
+
+    .matrix-feature-val {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       8. LATEST NEWS & SAGA BREAKDOWNS
+       ========================================================================== */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .news-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--aura-color);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.8), 0 0 15px var(--aura-glow);
+    }
+
+    .news-tag {
+      align-self: flex-start;
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--aura-color);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .news-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .news-snippet {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+
+    .news-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 0.8rem;
+    }
+
+    /* ==========================================================================
+       9. DETAIL MODAL & DRAWER SYSTEM
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 8, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-normal);
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-container {
+      background: var(--bg-card-hover);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      max-width: 850px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 40px var(--aura-glow);
+      position: relative;
+      transform: scale(0.92);
+      transition: transform var(--transition-bounce);
+    }
+
+    .modal-backdrop.open .modal-container {
+      transform: scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 1.2rem;
+      transition: all var(--transition-fast);
+    }
+
+    .modal-close-btn:hover {
+      background: var(--accent-crimson);
+      border-color: var(--accent-crimson);
+      transform: rotate(90deg);
+    }
+
+    .modal-header-banner {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .modal-banner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(26, 31, 46, 1) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+
+    .modal-content-body {
+      padding: 2rem;
+    }
+
+    .modal-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-subhead {
+      font-size: 0.95rem;
+      color: var(--aura-color);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .modal-section {
+      margin-bottom: 2rem;
+    }
+
+    .modal-section-h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Score breakdown inside modal */
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .score-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .score-val {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--aura-color);
+      font-family: var(--font-code);
+    }
+
+    .score-lbl {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Saved Vault Drawer */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-normal);
+    }
+
+    .drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 420px;
+      max-width: 90vw;
+      height: 100vh;
+      background: #0f121a;
+      border-left: 1px solid var(--border-glow);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+      z-index: 2001;
+      transform: translateX(100%);
+      transition: transform var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.5rem;
+    }
+
+    .drawer-backdrop.open .drawer-panel {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .drawer-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .drawer-items {
+      overflow-y: auto;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .saved-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      border-radius: var(--radius-md);
+    }
+
+    .saved-thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .saved-info {
+      flex-grow: 1;
+    }
+
+    .saved-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .saved-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .saved-remove {
+      background: none;
+      border: none;
+      color: var(--accent-crimson);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 4px;
+    }
+
+    /* ==========================================================================
+       10. FOOTER
+       ========================================================================== */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      background: rgba(7, 8, 11, 0.95);
+      padding: 4rem 0 2rem 0;
+      margin-top: 6rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      max-width: 380px;
+    }
+
+    .footer-head {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--aura-color);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .back-to-top {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .back-to-top:hover {
+      background: var(--aura-color);
+      box-shadow: 0 0 15px var(--aura-glow);
+    }
+
+    /* ==========================================================================
+       11. RESPONSIVE MEDIA QUERIES
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      .matrix-selectors {
+        grid-template-columns: 1fr;
+      }
+      .matrix-vs {
+        display: none;
+      }
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+      .matrix-comparison-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="theme-purple">
+
+  <!-- Ambient Cursed Energy / Saiyan Aura Canvas -->
+  <canvas id="aura-canvas"></canvas>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo-container">
+        <div class="logo-emblem">H</div>
+        <div>
+          <span class="logo-text gradient-text glow-effect">HASSAN'S ANIME</span>
+          <span class="logo-sub">STREAMING & POWER REALM</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#featured" class="nav-link">Featured Anime</a></li>
+          <li><a href="#characters" class="nav-link">Top Characters</a></li>
+          <li><a href="#powermatrix" class="nav-link">Power Matrix</a></li>
+          <li><a href="#news" class="nav-link">News & Sagas</a></li>
+        </ul>
+      </nav>
+
+      <!-- Actions & Aura Switcher -->
+      <div class="header-actions">
+        <!-- Theme Aura Selector -->
+        <div class="aura-picker" title="Switch Energetic Aura Theme">
+          <button class="aura-btn active" data-aura="purple" title="Cursed Purple Aura"></button>
+          <button class="aura-btn" data-aura="crimson" title="Sukuna Crimson Aura"></button>
+          <button class="aura-btn" data-aura="gold" title="Super Saiyan Gold Aura"></button>
+        </div>
+
+        <!-- Saved Vault Button -->
+        <button class="vault-btn" id="open-vault-btn" title="View Saved Bookmarks">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+          <span class="vault-text">Vault</span>
+          <span class="badge-count" id="vault-count">0</span>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#hero" class="nav-link active">Home</a>
+      <a href="#featured" class="nav-link">Featured Anime</a>
+      <a href="#characters" class="nav-link">Top Characters</a>
+      <a href="#powermatrix" class="nav-link">Power Matrix</a>
+      <a href="#news" class="nav-link">News & Sagas</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero" id="hero">
+    <div class="container hero-wrapper">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          ULTRA-PREMIUM ANIME HUB • 2026 EDITION
+        </div>
+        
+        <h1 class="hero-title">
+          Step Into The <br>
+          <span class="gradient-text glow-effect">Ultimate Anime Realm</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          Curated analysis, character power breakdowns, and story sagas hosted by Hassan. Dive deep into domain expansions, saiyan multipliers, haki mastery, and shadow monarchs.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="search-box">
+          <input type="text" id="anime-search" class="search-input" placeholder="Search anime series, power systems, or characters...">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+
+        <!-- Quick Filter Pills -->
+        <div class="hero-tags">
+          <span class="tag-label">Filter:</span>
+          <button class="tag-pill active" data-filter="all">All Sagas</button>
+          <button class="tag-pill" data-filter="Action">Action</button>
+          <button class="tag-pill" data-filter="Supernatural">Supernatural</button>
+          <button class="tag-pill" data-filter="Shonen">Shonen</button>
+          <button class="tag-pill" data-filter="Dark Fantasy">Dark Fantasy</button>
+        </div>
+
+        <!-- Metric Highlights -->
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="stat-number">6+</div>
+            <div class="stat-label">S-Tier Sagas</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Power Analysis</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">9.9</div>
+            <div class="stat-label">Hassan Score</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Interactive Featured Portal Card -->
+      <div class="hero-banner-card">
+        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1200&q=80" alt="Jujutsu Kaisen Gojo vs Sukuna" class="hero-banner-img" id="hero-banner-image">
+        <div class="hero-banner-overlay">
+          <div class="hero-banner-meta">
+            <span class="meta-badge">SPOTLIGHT</span>
+            <span>Jujutsu Kaisen: Shinjuku Showdown</span>
+          </div>
+          <h2 class="hero-banner-title">Gojo Satoru vs Ryomen Sukuna: The Pinnacle of Modern Sorcery</h2>
+          <button class="btn-breakdown" onclick="openBreakdownModal('jujutsu-kaisen')" style="width: auto; align-self: flex-start; margin-top: 8px;">
+            <span>Explore Battle Breakdown</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ANIME SHOWCASE SECTION
+       ========================================================================== -->
+  <section class="container" id="featured" style="padding-top: 3rem;">
+    <div class="section-header">
+      <span class="section-tag">CURATED SHOWCASE</span>
+      <h2 class="section-title">Featured Anime Vault</h2>
+      <p class="section-desc">Comprehensive story analysis, animation ratings, and high-fidelity power scaling for legendary series.</p>
+    </div>
+
+    <div class="showcase-grid" id="showcase-grid">
+      <!-- Dynamic JS will populate or render static structure -->
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TOP CHARACTERS & POWER TIER LIST SECTION
+       ========================================================================== -->
+  <section class="characters-section container" id="characters">
+    <div class="section-header">
+      <span class="section-tag">POWER ROSTER</span>
+      <h2 class="section-title">Top Anime Characters & Power Scaling</h2>
+      <p class="section-desc">Hassan's definitive rating matrix based on battle intelligence, destructive capacity, and hax abilities.</p>
+    </div>
+
+    <div class="character-filter-bar">
+      <button class="tier-btn active" data-tier="all">All Fighters</button>
+      <button class="tier-btn" data-tier="S+">S+ Tier (Godlike)</button>
+      <button class="tier-btn" data-tier="S">S Tier (Legendary)</button>
+      <button class="tier-btn" data-tier="A+">A+ Tier (Elite)</button>
+    </div>
+
+    <div class="character-grid" id="character-grid">
+      <!-- Populated via JS -->
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       POWER MATRIX COMPARATOR SECTION
+       ========================================================================== -->
+  <section class="matrix-section container" id="powermatrix">
+    <div class="section-header">
+      <span class="section-tag">SYSTEM COMPARATOR</span>
+      <h2 class="section-title">Anime Power Systems Matrix</h2>
+      <p class="section-desc">Compare the mechanics, limits, and domain conditions of different energy systems side-by-side.</p>
+    </div>
+
+    <div class="matrix-container">
+      <div class="matrix-selectors">
+        <div class="matrix-select-group">
+          <label for="sys1-select">Primary Energy System</label>
+          <select id="sys1-select" class="matrix-select">
+            <option value="cursed-energy">Cursed Energy (Jujutsu Kaisen)</option>
+            <option value="ki">Ki & God Ki (Dragon Ball)</option>
+            <option value="haki">Haki & Devil Fruits (One Piece)</option>
+            <option value="breathing">Breathing Styles (Demon Slayer)</option>
+            <option value="shadow">Shadow Monarch System (Solo Leveling)</option>
+            <option value="titan">Titan Shifting (Attack on Titan)</option>
+          </select>
+        </div>
+
+        <div class="matrix-vs">VS</div>
+
+        <div class="matrix-select-group">
+          <label for="sys2-select">Comparison Energy System</label>
+          <select id="sys2-select" class="matrix-select">
+            <option value="haki" selected>Haki & Devil Fruits (One Piece)</option>
+            <option value="cursed-energy">Cursed Energy (Jujutsu Kaisen)</option>
+            <option value="ki">Ki & God Ki (Dragon Ball)</option>
+            <option value="breathing">Breathing Styles (Demon Slayer)</option>
+            <option value="shadow">Shadow Monarch System (Solo Leveling)</option>
+            <option value="titan">Titan Shifting (Attack on Titan)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="matrix-comparison-grid" id="matrix-output">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       LATEST NEWS & SAGA BREAKDOWNS
+       ========================================================================== -->
+  <section class="container" id="news" style="padding-top: 4rem;">
+    <div class="section-header">
+      <span class="section-tag">HASSAN'S CHRONICLES</span>
+      <h2 class="section-title">Latest Saga News & Lore Deep-Dives</h2>
+      <p class="section-desc">Stay ahead with Hassan's breaking editorial analysis, leaks context, and future saga predictions.</p>
+    </div>
+
+    <div class="news-grid" id="news-grid">
+      <!-- News Cards via JS -->
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SAVED VAULT DRAWER
+       ========================================================================== -->
+  <div class="drawer-backdrop" id="drawer-backdrop">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h3 class="drawer-title">Hassan's Saved Vault</h3>
+        <button class="modal-close-btn" style="position: static;" id="close-drawer-btn">✕</button>
+      </div>
+
+      <div class="drawer-items" id="drawer-items-list">
+        <!-- Vault Items Populated via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       BREAKDOWN DETAIL MODAL
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="close-modal-btn">✕</button>
+      <div class="modal-header-banner">
+        <img src="" alt="" class="modal-banner-img" id="modal-img">
+        <div class="modal-banner-overlay">
+          <span class="meta-badge" id="modal-badge">ANALYSIS</span>
+          <h2 class="modal-title" id="modal-title">Anime Title</h2>
+        </div>
+      </div>
+      <div class="modal-content-body" id="modal-body-content">
+        <!-- Loaded dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#" class="logo-container">
+            <div class="logo-emblem">H</div>
+            <div>
+              <span class="logo-text gradient-text glow-effect">HASSAN'S ANIME</span>
+            </div>
+          </a>
+          <p>
+            The ultimate anime streaming matrix, lore database, and power scaling hub. Curated with unyielding passion by Hassan for true otaku enthusiasts worldwide.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-head">Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home Portal</a></li>
+            <li><a href="#featured">Featured Anime</a></li>
+            <li><a href="#characters">Character Roster</a></li>
+            <li><a href="#powermatrix">Power System Matrix</a></li>
+            <li><a href="#news">News & Theory Hub</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-head">Active Aura Realm</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+            Customize your viewing experience with dynamic cursed energy, crimson shrine, or super saiyan aura presets.
+          </p>
+          <div style="display: flex; gap: 8px;">
+            <button class="aura-btn" data-aura="purple" title="Purple"></button>
+            <button class="aura-btn" data-aura="crimson" title="Crimson"></button>
+            <button class="aura-btn" data-aura="gold" title="Gold"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          Curated with passion by Hassan | <strong>Hassan's Anime Hub 2026</strong>
+        </div>
+        <button class="back-to-top" id="back-to-top-btn" title="Back to Top">
+          ↑
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT DATA & LOGIC
+       ========================================================================== -->
+  <script>
+    /* --------------------------------------------------------------------------
+       1. DATA STRUCTURES (SHOWCASE, CHARACTERS, MATRIX, NEWS)
+       -------------------------------------------------------------------------- */
+    const ANIME_DATABASE = [
+      {
+        id: "jujutsu-kaisen",
+        title: "Jujutsu Kaisen",
+        year: "2020 - Present",
+        studio: "MAPPA",
+        rating: "9.8",
+        genres: ["Action", "Supernatural", "Shonen", "Dark Fantasy"],
+        image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1200&q=80",
+        synopsis: "Sorcerers battle cursed spirits spawned from human negative emotions. The narrative climaxes in the cataclysmic confrontation between Gojo Satoru, the strongest sorcerer of modern times, and Ryomen Sukuna, the King of Curses.",
+        powerSystemTitle: "Cursed Energy & Domain Expansions",
+        powerSystemDesc: "Fuelled by negative human emotions. Involves Reverse Cursed Technique (healing/positive energy), Limitless infinity, and Domain Expansions.",
+        hassanScore: { story: "9.5", animation: "10.0", power: "9.9", overall: "9.8" },
+        deepBreakdown: `
+          <div class="modal-section">
+            <h3 class="modal-section-h3">🔥 Core Power Mechanics: Cursed Energy (CE)</h3>
+            <p class="modal-p">Cursed energy flows like electricity from raw human trauma and despair. High-tier sorcerers like Gojo Satoru manipulate atomic-level space using the <strong>Limitless</strong> technique, granting total immunity to incoming physical vectors.</p>
+            <p class="modal-p"><strong>Domain Expansion</strong> represents the pinnacle of sorcery, embedding a sorcerer's inner world into real space with a <em>sure-hit kill metric</em>. Gojo's <em>Unlimited Void</em> overwhelms opponent brains with infinite information, whereas Sukuna's <em>Malevolent Shrine</em> slices everything within a 200-meter radius without constructing a physical barrier.</p>
+          </div>
+          <div class="modal-section">
+            <h3 class="modal-section-h3">⚔️ Hassan's Key Battle Breakdown: Gojo vs Sukuna</h3>
+            <p class="modal-p">In the Shinjuku Showdown, Sukuna utilized Mahoraga's adaptation capability not to strike Gojo directly, but to target the very fabric of space and reality itself—creating the infamous <strong>World-Cutting Slash</strong>.</p>
+          </div>
+          <div class="modal-section">
+            <h3 class="modal-section-h3">⭐ Hassan's Official Rating Matrix</h3>
+            <div class="score-grid">
+              <div class="score-card"><div class="score-val">9.5</div><div class="score-lbl">Story Sagas</div></div>
+              <div class="score-card"><div class="score-val">10.0</div><div class="score-lbl">Animation</div></div>
+              <div class="score-card"><div class="score-val">9.9</div><div class="score-lbl">Power System</div></div>
+              <div class="score-card"><div class="score-val">9.8</div><div class="score-lbl">Overall Hassan</div></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "dragon-ball-super",
+        title: "Dragon Ball Super / Z",
+        year: "1989 - Present",
+        studio: "Toei Animation",
+        rating: "9.7",
+        genres: ["Action", "Shonen", "Martial Arts", "Cosmic"],
+        image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80",
+        synopsis: "Son Goku and the Z-Fighters push beyond mortal physical boundaries, ascending through legendary Saiyan transformations to unlock divine God Ki and the state of Autonomous Ultra Instinct.",
+        powerSystemTitle: "Ki, God Ki & Ultra Instinct",
+        powerSystemDesc: "Latent spiritual stamina harnessed into blast waves, flying, and multiplier transformations (Super Saiyan 1-3, Blue, Ultra Instinct).",
+        hassanScore: { story: "9.2", animation: "9.8", power: "10.0", overall: "9.7" },
+        deepBreakdown: `
+          <div class="modal-section">
+            <h3 class="modal-section-h3">⚡ Transformation Multipliers & God Ki</h3>
+            <p class="modal-p">Dragon Ball set the archetype for anime power systems. Ordinary Ki fuels physical amplification, whereas <strong>God Ki</strong> compresses energy internally to avoid leaking power, enabling Super Saiyan God and Super Saiyan Blue.</p>
+            <p class="modal-p"><strong>Mastered Ultra Instinct (MUI)</strong> separates the mind from the body, allowing every limb to react autonomously to threats without neural latency. Conversely, Vegeta's <em>Ultra Ego</em> converts taken damage directly into raw destructive power.</p>
+          </div>
+          <div class="modal-section">
+            <h3 class="modal-section-h3">⭐ Hassan's Official Rating Matrix</h3>
+            <div class="score-grid">
+              <div class="score-card"><div class="score-val">9.2</div><div class="score-lbl">Story Sagas</div></div>
+              <div class="score-card"><div class="score-val">9.8</div><div class="score-lbl">Animation</div></div>
+              <div class="score-card"><div class="score-val">10.0</div><div class="score-lbl">Power System</div></div>
+              <div class="score-card"><div class="score-val">9.7</div><div class="score-lbl">Overall Hassan</div></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "attack-on-titan",
+        title: "Attack on Titan",
+        year: "2013 - 2023",
+        studio: "WIT / MAPPA",
+        rating: "9.9",
+        genres: ["Dark Fantasy", "Action", "Mystery", "Political"],
+        image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80",
+        synopsis: "Humanity retreats behind massive concentric walls to escape man-eating Titans, culminating in Eren Yeager's dark crusade to liberate Eldia through the apocalyptic Rumbling.",
+        powerSystemTitle: "Titan Shifting & Ymir's Spine",
+        powerSystemDesc: "Nine Nine-Titan Shifters connected via the spatial Paths network, requiring injury and clear intent to transform into giant flesh constructs.",
+        hassanScore: { story: "10.0", animation: "9.8", power: "9.8", overall: "9.9" },
+        deepBreakdown: `
+          <div class="modal-section">
+            <h3 class="modal-section-h3">🩸 Paths, Eldian Genetics & The Founding Titan</h3>
+            <p class="modal-p">All Titans originate from Ymir Fritz and her contact with the source of all living matter. The <strong>Founding Titan</strong> commands all Subject of Ymir minds across time and space, enabling the total mobilization of thousands of Wall Titans in <em>The Rumbling</em>.</p>
+            <p class="modal-p">Human combat relies on <strong>Omni-Directional Mobility (ODM) Gear</strong>, ultra-hard steel blades, and Thunder Spears to target the 1-meter nape weak point of Titans.</p>
+          </div>
+          <div class="modal-section">
+            <h3 class="modal-section-h3">⭐ Hassan's Official Rating Matrix</h3>
+            <div class="score-grid">
+              <div class="score-card"><div class="score-val">10.0</div><div class="score-lbl">Story Sagas</div></div>
+              <div class="score-card"><div class="score-val">9.8</div><div class="score-lbl">Animation</div></div>
+              <div class="score-card"><div class="score-val">9.8</div><div class="score-lbl">Power System</div></div>
+              <div class="score-card"><div class="score-val">9.9</div><div class="score-lbl">Overall Hassan</div></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "demon-slayer",
+        title: "Demon Slayer: Kimetsu no Yaiba",
+        year: "2019 - Present",
+        studio: "ufotable",
+        rating: "9.6",
+        genres: ["Action", "Supernatural", "Historical", "Shonen"],
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+        synopsis: "Tanjiro Kamado joins the Demon Slayer Corps to avenge his slaughtered family and restore his sister Nezuko to human form while hunting Muzan Kibutsuji.",
+        powerSystemTitle: "Total Concentration Breathing",
+        powerSystemDesc: "Lung capacity saturation amplifying arterial oxygen, creating sword styles mirroring natural elements (Sun, Flame, Water, Thunder, Mist).",
+        hassanScore: { story: "9.1", animation: "10.0", power: "9.6", overall: "9.6" },
+        deepBreakdown: `
+          <div class="modal-section">
+            <h3 class="modal-section-h3">🌊 Breathing Styles & The Demon Slayer Mark</h3>
+            <p class="modal-p">By maximizing oxygen intake through <strong>Total Concentration Constant</strong>, Slayers achieve superhuman reflexes and strength equivalent to demons. The ancestral progenitor style, <em>Sun Breathing (Hinokami Kagura)</em>, directly counters Muzan's cellular regeneration.</p>
+            <p class="modal-p">The awakening of the <strong>Demon Slayer Mark</strong> elevates body heat above 39°C and heart rate over 200 BPM, unlocking the <em>Transparent World</em> sight and Red Nichirin Blades.</p>
+          </div>
+          <div class="modal-section">
+            <h3 class="modal-section-h3">⭐ Hassan's Official Rating Matrix</h3>
+            <div class="score-grid">
+              <div class="score-card"><div class="score-val">9.1</div><div class="score-lbl">Story Sagas</div></div>
+              <div class="score-card"><div class="score-val">10.0</div><div class="score-lbl">Animation</div></div>
+              <div class="score-card"><div class="score-val">9.6</div><div class="score-lbl">Power System</div></div>
+              <div class="score-card"><div class="score-val">9.6</div><div class="score-lbl">Overall Hassan</div></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "solo-leveling",
+        title: "Solo Leveling",
+        year: "2024 - Present",
+        studio: "A-1 Pictures",
+        rating: "9.7",
+        genres: ["Action", "Fantasy", "Supernatural", "System"],
+        image: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1200&q=80",
+        synopsis: "In a world where dimensional gates connect earth with deadly dungeons, the weakest E-Rank hunter Sung Jinwoo gains the secret ability to level up without limits, becoming the invincible Shadow Monarch.",
+        powerSystemTitle: "Shadow Monarch Authority ('Arise')",
+        powerSystemDesc: "System UI interface giving unlimited stat progression, infinite shadow army extraction, and dimensional ruler armor.",
+        hassanScore: { story: "9.3", animation: "9.9", power: "9.8", overall: "9.7" },
+        deepBreakdown: `
+          <div class="modal-section">
+            <h3 class="modal-section-h3">👑 The Monarch System & Shadow Extraction</h3>
+            <p class="modal-p">Unlike fixed hunter mana ranks, Jinwoo was chosen by Ashborn (The Shadow Monarch) as a mortal vessel. Using the command phrase <strong>"Arise" (기상)</strong>, he extracts the souls of slain enemies—converting bosses into loyal, immortal Shadow Soldiers like Igris and Beru.</p>
+            <p class="modal-p">His <strong>Monarch's Domain</strong> amplifies shadow soldier stats by 50% while operating as an absolute area of shadow dark magic.</p>
+          </div>
+          <div class="modal-section">
+            <h3 class="modal-section-h3">⭐ Hassan's Official Rating Matrix</h3>
+            <div class="score-grid">
+              <div class="score-card"><div class="score-val">9.3</div><div class="score-lbl">Story Sagas</div></div>
+              <div class="score-card"><div class="score-val">9.9</div><div class="score-lbl">Animation</div></div>
+              <div class="score-card"><div class="score-val">9.8</div><div class="score-lbl">Power System</div></div>
+              <div class="score-card"><div class="score-val">9.7</div><div class="score-lbl">Overall Hassan</div></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "one-piece",
+        title: "One Piece",
+        year: "1999 - Present",
+        studio: "Toei Animation",
+        rating: "9.9",
+        genres: ["Action", "Adventure", "Fantasy", "Shonen"],
+        image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80",
+        synopsis: "Monkey D. Luffy sails the perilous Grand Line in search of the legendary One Piece treasure, awakening the mythic Sun God Nika Gear 5 transformation to liberate oppressed island kingdoms.",
+        powerSystemTitle: "Devil Fruits & 3 Types of Haki",
+        powerSystemDesc: "Paramount willpower energy (Haki) countering unnatural sea fruit powers (Zoan, Logia, Paramecia). Advanced Conqueror's Haki coating.",
+        hassanScore: { story: "10.0", animation: "9.7", power: "9.9", overall: "9.9" },
+        deepBreakdown: `
+          <div class="modal-section">
+            <h3 class="modal-section-h3">🏴‍☠️ Haki Willpower & Gear 5 Sun God Nika</h3>
+            <p class="modal-p"><strong>Haki</strong> is spiritual willpower divided into Observation (future sight), Armament (invisible armor & internal destruction), and rare <strong>Conqueror's Haki</strong> (overwhelming thousands with raw presence).</p>
+            <p class="modal-p">Luffy's awakened <strong>Gear 5</strong> reveals his fruit is actually the Mythical Zoan <em>Hito Hito no Mi, Model: Nika</em>—granting ridiculous rubber physics to the surroundings and battle freedom bounded only by imagination.</p>
+          </div>
+          <div class="modal-section">
+            <h3 class="modal-section-h3">⭐ Hassan's Official Rating Matrix</h3>
+            <div class="score-grid">
+              <div class="score-card"><div class="score-val">10.0</div><div class="score-lbl">Story Sagas</div></div>
+              <div class="score-card"><div class="score-val">9.7</div><div class="score-lbl">Animation</div></div>
+              <div class="score-card"><div class="score-val">9.9</div><div class="score-lbl">Power System</div></div>
+              <div class="score-card"><div class="score-val">9.9</div><div class="score-lbl">Overall Hassan</div></div>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    const CHARACTER_DATABASE = [
+      {
+        name: "Gojo Satoru",
+        anime: "Jujutsu Kaisen",
+        tier: "S+",
+        quote: "Throughout Heaven and Earth, I Alone Am The Honored One.",
+        avatar: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=300&q=80",
+        stats: { destructive: 99, speed: 98, hax: 100, iq: 96 }
+      },
+      {
+        name: "Ryomen Sukuna",
+        anime: "Jujutsu Kaisen",
+        tier: "S+",
+        quote: "Stand proud. You are strong.",
+        avatar: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=300&q=80",
+        stats: { destructive: 100, speed: 97, hax: 99, iq: 100 }
+      },
+      {
+        name: "Goku (Ultra Instinct)",
+        anime: "Dragon Ball Super",
+        tier: "S+",
+        quote: "I am the hope of the universe. I am the answer to all living things that cry out for peace.",
+        avatar: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=300&q=80",
+        stats: { destructive: 100, speed: 100, hax: 94, iq: 95 }
+      },
+      {
+        name: "Sung Jinwoo",
+        anime: "Solo Leveling",
+        tier: "S+",
+        quote: "Arise. Protect what is mine.",
+        avatar: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=300&q=80",
+        stats: { destructive: 98, speed: 99, hax: 100, iq: 97 }
+      },
+      {
+        name: "Monkey D. Luffy (Gear 5)",
+        anime: "One Piece",
+        tier: "S+",
+        quote: "This is my peak! Gear 5th!",
+        avatar: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=300&q=80",
+        stats: { destructive: 97, speed: 96, hax: 98, iq: 92 }
+      },
+      {
+        name: "Levi Ackerman",
+        anime: "Attack on Titan",
+        tier: "S",
+        quote: "The only thing we're allowed to do is to believe that we won't regret the choice we made.",
+        avatar: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80",
+        stats: { destructive: 85, speed: 95, hax: 75, iq: 99 }
+      },
+      {
+        name: "Tanjiro Kamado",
+        anime: "Demon Slayer",
+        tier: "A+",
+        quote: "No matter how many people you may lose, you have no choice but to go on living.",
+        avatar: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=300&q=80",
+        stats: { destructive: 88, speed: 92, hax: 84, iq: 90 }
+      }
+    ];
+
+    const POWER_MATRIX_DATA = {
+      "cursed-energy": {
+        title: "Cursed Energy System",
+        anime: "Jujutsu Kaisen",
+        source: "Negative Human Emotions & Trauma",
+        peak: "Domain Expansion (Sure-Hit Space Overlay)",
+        limiter: "Brain Burnout after Domain usage & High CE Consumption",
+        haxLevel: "10 / 10 (Infinite Vector Shielding, Hollow Purple)"
+      },
+      "ki": {
+        title: "Ki & Divine God Ki",
+        anime: "Dragon Ball Series",
+        source: "Latent Life Force & Spiritual Compression",
+        peak: "Mastered Ultra Instinct & Hakai Destruction",
+        limiter: "Stamina drain during divine forms & body toll",
+        haxLevel: "9.5 / 10 (Matter Eradication, Autonomous Reflexes)"
+      },
+      "haki": {
+        title: "Haki & Devil Fruits",
+        anime: "One Piece",
+        source: "Unshakeable Spiritual Willpower & Mythic Fruits",
+        peak: "Advanced Conqueror's Coating & Fruit Awakening",
+        limiter: "Sea Water / Sea-Prism Stone & Willpower Fatigue",
+        haxLevel: "9.7 / 10 (Future Sight, Reality Bending Rubber Physics)"
+      },
+      "breathing": {
+        title: "Total Concentration Breathing",
+        anime: "Demon Slayer",
+        source: "Oxygen Arterial Saturation & Physical Conditioning",
+        peak: "Sun Breathing & Transparent World Sight",
+        limiter: "Human fragile body limits & Slayer Mark 25-yr curse",
+        haxLevel: "8.5 / 10 (Sub-atomic muscle speed, Red Blade nullification)"
+      },
+      "shadow": {
+        title: "Shadow Monarch Authority",
+        anime: "Solo Leveling",
+        source: "Ashborn's Death Mana & Dimensional System",
+        peak: "Monarch's Realm & Infinite Shadow Army ('Arise')",
+        limiter: "Requires dead bodies to extract & Mana maintenance",
+        haxLevel: "10 / 10 (Necromancy, Spatial Transfer, Immortal Army)"
+      },
+      "titan": {
+        title: "Titan Shifting Paths",
+        anime: "Attack on Titan",
+        source: "Ymir Fritz Organic Parasite & Paths Connection",
+        peak: "Founding Titan Universal Command & Rumbling",
+        limiter: "Curse of Ymir (13 year lifespan limit) & Nape vulnerability",
+        haxLevel: "9.2 / 10 (Memory altering, Mass Colossal mobilization)"
+      }
+    };
+
+    const NEWS_DATABASE = [
+      {
+        tag: "EDITORIAL",
+        title: "Jujutsu Kaisen Season 3: The Culling Game Animation Breakdown",
+        date: "Feb 2026",
+        time: "5 min read",
+        snippet: "Hassan analyzes how MAPPA's dynamic lighting and spatial camera mechanics elevate the chaotic fights in Sendai Colony."
+      },
+      {
+        tag: "POWER SCALING",
+        title: "Solo Leveling Season 2: Monarch Awakening Power Metrics",
+        date: "Jan 2026",
+        time: "7 min read",
+        snippet: "A deep dive into Sung Jinwoo's transition from Shadow Lord to true God of Death, featuring full shadow army count stats."
+      },
+      {
+        tag: "THEORY HUB",
+        title: "One Piece Elbaf Arc: The Secret of Sun God Nika & Ancient Weapons",
+        date: "Feb 2026",
+        time: "6 min read",
+        snippet: "Connecting the Void Century lore with Luffy's awakened Gear 5 beating drum heartbeat rhythm."
+      }
+    ];
+
+    // Local Storage Favorites System
+    let savedVault = JSON.parse(localStorage.getItem("hassans_anime_vault") || "[]");
+
+    /* --------------------------------------------------------------------------
+       2. RENDER FUNCTIONS
+       -------------------------------------------------------------------------- */
+    function renderShowcaseCards(filter = "all", searchQuery = "") {
+      const grid = document.getElementById("showcase-grid");
+      grid.innerHTML = "";
+
+      const filtered = ANIME_DATABASE.filter(anime => {
+        const matchesFilter = filter === "all" || anime.genres.includes(filter);
+        const matchesSearch = searchQuery === "" || 
+          anime.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          anime.powerSystemTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          anime.synopsis.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesFilter && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+            <h3>No Anime Saga Found Matching "${searchQuery}"</h3>
+            <p style="margin-top: 8px;">Try searching for "Gojo", "Haki", "Saiyan", or clear your filter tags.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((anime, idx) => {
+        const isFav = savedVault.some(item => item.id === anime.id);
+        const card = document.createElement("div");
+        card.className = "anime-card";
+        card.style.animationDelay = `${idx * 0.1}s`;
+
+        card.innerHTML = `
+          <div class="card-img-wrapper">
+            <img src="${anime.image}" alt="${anime.title}" class="card-img" loading="lazy">
+            <div class="card-overlay-gradient"></div>
+            <div class="card-rating-badge">
+              <span>★</span> ${anime.rating}
+            </div>
+            <button class="card-fav-btn ${isFav ? 'active' : ''}" onclick="toggleVaultItem(event, '${anime.id}', 'anime')" title="Save to Vault">
+              ♥
+            </button>
+          </div>
+
+          <div class="card-body">
+            <div class="card-meta-header">
+              <span class="anime-year-studio">${anime.year} • ${anime.studio}</span>
+            </div>
+            
+            <h3 class="anime-title">${anime.title}</h3>
+
+            <div class="genre-badges">
+              ${anime.genres.map(g => `<span class="genre-badge">${g}</span>`).join('')}
+            </div>
+
+            <p class="anime-synopsis">${anime.synopsis}</p>
+
+            <div class="power-summary-box">
+              <div class="power-summary-title">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                ${anime.powerSystemTitle}
+              </div>
+              <div class="power-summary-text">${anime.powerSystemDesc}</div>
+            </div>
+
+            <button class="btn-breakdown" onclick="openBreakdownModal('${anime.id}')">
+              <span>Read Full Hassan Breakdown</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    function renderCharacters(tier = "all") {
+      const grid = document.getElementById("character-grid");
+      grid.innerHTML = "";
+
+      const filtered = CHARACTER_DATABASE.filter(c => tier === "all" || c.tier === tier);
+
+      filtered.forEach(char => {
+        const card = document.createElement("div");
+        card.className = "char-card";
+
+        card.innerHTML = `
+          <div class="char-avatar-wrapper">
+            <img src="${char.avatar}" alt="${char.name}" class="char-avatar">
+            <div class="char-tier-tag">${char.tier}</div>
+          </div>
+
+          <h3 class="char-name">${char.name}</h3>
+          <div class="char-anime">${char.anime}</div>
+          <div class="char-quote">"${char.quote}"</div>
+
+          <div class="stat-bars">
+            <div class="stat-row">
+              <span class="stat-name">Destruction</span>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: ${char.stats.destructive}%;"></div></div>
+              <span class="stat-val">${char.stats.destructive}</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Speed</span>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: ${char.stats.speed}%;"></div></div>
+              <span class="stat-val">${char.stats.speed}</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Hax/Ability</span>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: ${char.stats.hax}%;"></div></div>
+              <span class="stat-val">${char.stats.hax}</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Battle IQ</span>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: ${char.stats.iq}%;"></div></div>
+              <span class="stat-val">${char.stats.iq}</span>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    function renderMatrixOutput() {
+      const sys1Key = document.getElementById("sys1-select").value;
+      const sys2Key = document.getElementById("sys2-select").value;
+
+      const sys1 = POWER_MATRIX_DATA[sys1Key];
+      const sys2 = POWER_MATRIX_DATA[sys2Key];
+
+      const container = document.getElementById("matrix-output");
+      container.innerHTML = `
+        <div class="matrix-column">
+          <div class="matrix-column-header">
+            <h3 class="matrix-sys-title">${sys1.title}</h3>
+            <div class="matrix-sys-anime">${sys1.anime}</div>
+          </div>
+          <div class="matrix-feature">
+            <div class="matrix-feature-label">Energy Source</div>
+            <div class="matrix-feature-val">${sys1.source}</div>
+          </div>
+          <div class="matrix-feature">
+            <div class="matrix-feature-label">Peak Form / Ultimate Mastery</div>
+            <div class="matrix-feature-val">${sys1.peak}</div>
+          </div>
+          <div class="matrix-feature">
+            <div class="matrix-feature-label">Crucial Limiter & Vulnerability</div>
+            <div class="matrix-feature-val">${sys1.limiter}</div>
+          </div>
+          <div class="matrix-feature">
+            <div class="matrix-feature-label">Hax & Utility Rating</div>
+            <div class="matrix-feature-val" style="color: var(--aura-color); font-weight: 800;">${sys1.haxLevel}</div>
+          </div>
+        </div>
+
+        <div class="matrix-column">
+          <div class="matrix-column-header">
+            <h3 class="matrix-sys-title">${sys2.title}</h3>
+            <div class="matrix-sys-anime">${sys2.anime}</div>
+          </div>
+          <div class="matrix-feature">
+            <div class="matrix-feature-label">Energy Source</div>
+            <div class="matrix-feature-val">${sys2.source}</div>
+          </div>
+          <div class="matrix-feature">
+            <div class="matrix-feature-label">Peak Form / Ultimate Mastery</div>
+            <div class="matrix-feature-val">${sys2.peak}</div>
+          </div>
+          <div class="matrix-feature">
+            <div class="matrix-feature-label">Crucial Limiter & Vulnerability</div>
+            <div class="matrix-feature-val">${sys2.limiter}</div>
+          </div>
+          <div class="matrix-feature">
+            <div class="matrix-feature-label">Hax & Utility Rating</div>
+            <div class="matrix-feature-val" style="color: var(--aura-color); font-weight: 800;">${sys2.haxLevel}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderNewsGrid() {
+      const grid = document.getElementById("news-grid");
+      grid.innerHTML = "";
+
+      NEWS_DATABASE.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "news-card";
+        card.innerHTML = `
+          <span class="news-tag">${item.tag}</span>
+          <h3 class="news-title">${item.title}</h3>
+          <p class="news-snippet">${item.snippet}</p>
+          <div class="news-footer">
+            <span>📅 ${item.date}</span>
+            <span>⏱️ ${item.time}</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    /* --------------------------------------------------------------------------
+       3. MODAL & DRAWER LOGIC
+       -------------------------------------------------------------------------- */
+    function openBreakdownModal(animeId) {
+      const anime = ANIME_DATABASE.find(a => a.id === animeId);
+      if (!anime) return;
+
+      document.getElementById("modal-img").src = anime.image;
+      document.getElementById("modal-badge").textContent = `${anime.studio} • ${anime.year}`;
+      document.getElementById("modal-title").textContent = anime.title;
+      document.getElementById("modal-body-content").innerHTML = anime.deepBreakdown;
+
+      document.getElementById("modal-backdrop").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      document.getElementById("modal-backdrop").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function toggleVaultItem(e, id, type) {
+      if (e) e.stopPropagation();
+      const existingIdx = savedVault.findIndex(item => item.id === id);
+
+      if (existingIdx >= 0) {
+        savedVault.splice(existingIdx, 1);
+      } else {
+        const itemObj = ANIME_DATABASE.find(a => a.id === id);
+        if (itemObj) {
+          savedVault.push({ id: itemObj.id, title: itemObj.title, image: itemObj.image, rating: itemObj.rating });
+        }
+      }
+
+      localStorage.setItem("hassans_anime_vault", JSON.stringify(savedVault));
+      updateVaultUI();
+      renderShowcaseCards(document.querySelector('.tag-pill.active').dataset.filter, document.getElementById('anime-search').value);
+    }
+
+    function updateVaultUI() {
+      document.getElementById("vault-count").textContent = savedVault.length;
+      const list = document.getElementById("drawer-items-list");
+
+      if (savedVault.length === 0) {
+        list.innerHTML = `
+          <div style="text-align:center; color: var(--text-dim); padding: 3rem 1rem;">
+            Your Vault is currently empty.<br>Click the heart icon on any anime card to save it here!
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = savedVault.map(item => `
+        <div class="saved-item">
+          <img src="${item.image}" class="saved-thumb" alt="${item.title}">
+          <div class="saved-info">
+            <div class="saved-title">${item.title}</div>
+            <div class="saved-sub">★ ${item.rating} • Hassan Certified</div>
+          </div>
+          <button class="saved-remove" onclick="toggleVaultItem(null, '${item.id}', 'anime')">✕</button>
+        </div>
+      `).join('');
+    }
+
+    /* --------------------------------------------------------------------------
+       4. AMBIENT CANVASES & PARTICLES
+       -------------------------------------------------------------------------- */
+    function initAuraCanvas() {
+      const canvas = document.getElementById("aura-canvas");
+      const ctx = canvas.getContext("2d");
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = Array.from({ length: 45 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 2.5 + 1,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
+        alpha: Math.random() * 0.6 + 0.2
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        const activeAuraColor = getComputedStyle(document.body).getPropertyValue('--aura-color').trim() || '#a855f7';
+
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = activeAuraColor;
+          ctx.globalAlpha = p.alpha;
+          ctx.fill();
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    /* --------------------------------------------------------------------------
+       5. INITIALIZATION & EVENT LISTENERS
+       -------------------------------------------------------------------------- */
+    document.addEventListener("DOMContentLoaded", () => {
+      // Render Initial View
+      renderShowcaseCards();
+      renderCharacters();
+      renderMatrixOutput();
+      renderNewsGrid();
+      updateVaultUI();
+      initAuraCanvas();
+
+      // Theme Selector Buttons
+      document.querySelectorAll(".aura-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".aura-btn").forEach(b => b.classList.remove("active"));
+          const theme = btn.dataset.aura;
+          
+          document.body.className = `theme-${theme}`;
+          
+          document.querySelectorAll(`.aura-btn[data-aura="${theme}"]`).forEach(b => b.classList.add("active"));
+        });
+      });
+
+      // Search Bar Event
+      const searchInput = document.getElementById("anime-search");
+      searchInput.addEventListener("input", (e) => {
+        const activeFilter = document.querySelector(".tag-pill.active").dataset.filter;
+        renderShowcaseCards(activeFilter, e.target.value);
+      });
+
+      // Filter Tag Pills
+      document.querySelectorAll(".tag-pill").forEach(pill => {
+        pill.addEventListener("click", () => {
+          document.querySelectorAll(".tag-pill").forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+          renderShowcaseCards(pill.dataset.filter, searchInput.value);
+        });
+      });
+
+      // Tier Buttons
+      document.querySelectorAll(".tier-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".tier-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderCharacters(btn.dataset.tier);
+        });
+      });
+
+      // Matrix Selects
+      document.getElementById("sys1-select").addEventListener("change", renderMatrixOutput);
+      document.getElementById("sys2-select").addEventListener("change", renderMatrixOutput);
+
+      // Modal Closers
+      document.getElementById("close-modal-btn").addEventListener("click", closeModal);
+      document.getElementById("modal-backdrop").addEventListener("click", (e) => {
+        if (e.target.id === "modal-backdrop") closeModal();
+      });
+
+      // Vault Drawer Controls
+      const drawerBackdrop = document.getElementById("drawer-backdrop");
+      document.getElementById("open-vault-btn").addEventListener("click", () => {
+        drawerBackdrop.classList.add("open");
+      });
+      document.getElementById("close-drawer-btn").addEventListener("click", () => {
+        drawerBackdrop.classList.remove("open");
+      });
+      drawerBackdrop.addEventListener("click", (e) => {
+        if (e.target.id === "drawer-backdrop") drawerBackdrop.classList.remove("open");
+      });
+
+      // Mobile Nav Toggle
+      const mobileToggle = document.getElementById("mobile-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+      mobileToggle.addEventListener("click", () => {
+        mobileNav.classList.toggle("open");
+      });
+
+      // Back to top
+      document.getElementById("back-to-top-btn").addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
+</body>
+</html>
