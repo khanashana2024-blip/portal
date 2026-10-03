@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hassan's Anime | The Ultimate Anime Realm</title>
+<meta name="description" content="Hassan's Anime - Curated analysis, character power breakdowns, and story sagas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b0c10;
+    --bg-soft: #121318;
+    --purple: #a855f7;
+    --crimson: #ef4444;
+    --gold: #eab308;
+    --text-soft: #c9c9d4;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: #f5f5f7;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(168,85,247,0.12), transparent 40%),
+      radial-gradient(circle at 85% 10%, rgba(239,68,68,0.10), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(234,179,8,0.08), transparent 45%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  ::selection{ background: var(--purple); color: #fff; }
+
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: var(--bg); }
+  ::-webkit-scrollbar-thumb{ background: linear-gradient(var(--purple), var(--crimson)); border-radius: 10px; }
+
+  a{ text-decoration:none; color: inherit; }
+  ul{ list-style:none; }
+
+  .wrap{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== NAVBAR ===== */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(11,12,16,0.75);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(168,85,247,0.2);
+  }
+
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .logo{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--purple), var(--crimson), var(--gold));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 5s linear infinite;
+    text-shadow: 0 0 25px rgba(168,85,247,0.3);
+    cursor: default;
+    display:flex;
+    align-items:center;
+    gap: 8px;
+  }
+
+  .logo .spark{
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 15px 4px var(--gold);
+    animation: pulse-dot 1.8s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes shine{
+    to{ background-position: 200% center; }
+  }
+
+  @keyframes pulse-dot{
+    0%,100%{ transform: scale(1); opacity: 1; }
+    50%{ transform: scale(1.5); opacity: 0.6; }
+  }
+
+  .nav-links{
+    display:flex;
+    gap: 36px;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .nav-links a{
+    position: relative;
+    color: var(--text-soft);
+    transition: color .3s ease;
+    padding: 6px 2px;
+  }
+
+  .nav-links a::after{
+    content:"";
+    position: absolute;
+    left:0; bottom:0;
+    height: 2px;
+    width:0%;
+    background: linear-gradient(90deg, var(--purple), var(--crimson));
+    transition: width .35s ease;
+    box-shadow: 0 0 8px var(--purple);
+  }
+
+  .nav-links a:hover{ color: #fff; }
+  .nav-links a:hover::after{ width: 100%; }
+
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap: 5px;
+    cursor:pointer;
+    background: none;
+    border:none;
+    z-index: 200;
+  }
+  .burger span{
+    width: 26px; height: 2px;
+    background: #fff;
+    display:block;
+    transition: all .3s ease;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position: relative;
+    min-height: 92vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    padding: 120px 20px 80px;
+  }
+
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    background-image: url('https://images.pexels.com/photos/14647235/pexels-photo-14647235.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1000&w=1800');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.28;
+    filter: saturate(1.3) contrast(1.1);
+    z-index: 0;
+    animation: zoomPan 22s ease-in-out infinite alternate;
+  }
+
+  @keyframes zoomPan{
+    0%{ transform: scale(1) translate(0,0); }
+    100%{ transform: scale(1.12) translate(-1%, -1%); }
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(11,12,16,0.3) 0%, rgba(11,12,16,0.85) 75%, var(--bg) 100%);
+    z-index: 1;
+  }
+
+  .hero-ring{
+    position:absolute;
+    width: 650px; height:650px;
+    border-radius: 50%;
+    border: 1px solid rgba(168,85,247,0.25);
+    top: 50%; left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    animation: ringPulse 4s ease-in-out infinite;
+  }
+  .hero-ring.r2{
+    width: 850px; height: 850px;
+    border-color: rgba(239,68,68,0.18);
+    animation-delay: 1s;
+  }
+  .hero-ring.r3{
+    width: 1050px; height: 1050px;
+    border-color: rgba(234,179,8,0.12);
+    animation-delay: 2s;
+  }
+
+  @keyframes ringPulse{
+    0%,100%{ transform: translate(-50%,-50%) scale(1); opacity: .5; }
+    50%{ transform: translate(-50%,-50%) scale(1.06); opacity: 1; }
+  }
+
+  .hero-content{
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+  }
+
+  .hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 8px 18px;
+    border: 1px solid rgba(168,85,247,0.4);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--purple);
+    background: rgba(168,85,247,0.08);
+    margin-bottom: 28px;
+    animation: fadeDown .8s ease both;
+  }
+
+  h1.hero-title{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+    line-height: 1.02;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+    animation: fadeUp 1s ease .1s both;
+  }
+
+  h1.hero-title .glow-word{
+    background: linear-gradient(90deg, var(--purple), var(--crimson) 50%, var(--gold));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 4s linear infinite, pulseGlow 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow{
+    0%,100%{ filter: drop-shadow(0 0 12px rgba(168,85,247,0.5)); }
+    50%{ filter: drop-shadow(0 0 28px rgba(239,68,68,0.55)); }
+  }
+
+  .hero-sub{
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-soft);
+    max-width: 620px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    animation: fadeUp 1s ease .25s both;
+  }
+
+  .search-box{
+    display:flex;
+    align-items:center;
+    max-width: 520px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 6px 6px 6px 20px;
+    transition: all .35s ease;
+    animation: fadeUp 1s ease .4s both;
+  }
+
+  .search-box:focus-within{
+    border-color: var(--purple);
+    box-shadow: 0 0 0 4px rgba(168,85,247,0.18), 0 0 25px rgba(168,85,247,0.35);
+    background: rgba(168,85,247,0.06);
+  }
+
+  .search-box input{
+    flex:1;
+    background: transparent;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-size: 1rem;
+    padding: 12px 0;
+    font-family: inherit;
+  }
+  .search-box input::placeholder{ color: #8a8a99; }
+
+  .search-box button{
+    background: linear-gradient(135deg, var(--purple), var(--crimson));
+    border:none;
+    color:#fff;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size: 0.95rem;
+    transition: transform .25s ease, box-shadow .25s ease;
+    white-space: nowrap;
+  }
+  .search-box button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(168,85,247,0.45);
+  }
+
+  .hero-stats{
+    display:flex;
+    justify-content:center;
+    gap: 50px;
+    margin-top: 55px;
+    flex-wrap: wrap;
+    animation: fadeUp 1s ease .55s both;
+  }
+  .stat{ text-align:center; }
+  .stat .num{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    text-shadow: 0 0 18px rgba(234,179,8,0.4);
+  }
+  .stat .label{
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(26px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  @keyframes fadeDown{
+    from{ opacity:0; transform: translateY(-16px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  section{ position: relative; z-index: 1; }
+
+  .section-pad{ padding: 110px 0 60px; }
+
+  .section-head{
+    text-align:center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  .section-title{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .section-title span{ color: var(--purple); }
+
+  .section-desc{ color: var(--text-soft); font-size: 1rem; line-height: 1.7; }
+
+  /* ===== ANIME CARDS ===== */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 34px;
+  }
+
+  .card{
+    background: linear-gradient(180deg, var(--bg-soft), #0d0e13);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+    opacity: 0;
+    transform: translateY(40px);
+    display:flex;
+    flex-direction: column;
+  }
+
+  .card.show{
+    animation: cardIn .7s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+
+  @keyframes cardIn{
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .card:hover{
+    transform: translateY(-10px) scale(1.012);
+    border-color: var(--accent, var(--purple));
+    box-shadow: 0 20px 50px -15px rgba(0,0,0,0.6), 0 0 0 1px var(--accent, var(--purple)) inset, 0 0 40px -5px var(--accent, var(--purple));
+  }
+
+  .card-img-wrap{
+    position: relative;
+    height: 230px;
+    overflow:hidden;
+  }
+
+  .card-img-wrap img{
+    width:100%; height:100%;
+    object-fit: cover;
+    transition: transform .6s ease, filter .6s ease;
+  }
+
+  .card:hover .card-img-wrap img{
+    transform: scale(1.1);
+    filter: brightness(1.1) saturate(1.2);
+  }
+
+  .card-img-wrap::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, transparent 40%, rgba(11,12,16,0.95) 100%);
+  }
+
+  .year-badge{
+    position:absolute;
+    top: 14px; right: 14px;
+    background: rgba(11,12,16,0.75);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    z-index: 2;
+    backdrop-filter: blur(6px);
+  }
+
+  .power-badge{
+    position:absolute;
+    bottom: 14px; left: 14px;
+    z-index: 2;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    color: #0b0c10;
+    background: var(--accent, var(--purple));
+    box-shadow: 0 0 18px var(--accent, var(--purple));
+  }
+
+  .card-body{
+    padding: 24px 24px 26px;
+    display:flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-title{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  .genres{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .genre-tag{
+    font-size: 0.7rem;
+    padding: 4px 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--text-soft);
+    background: rgba(255,255,255,0.03);
+    font-weight: 500;
+  }
+
+  .card-desc{
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .power-system{
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--accent, var(--purple));
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    margin-bottom: 20px;
+    color: #e4e4ea;
+  }
+  .power-system b{ color: var(--accent, var(--purple)); }
+
+  .card-footer{
+    margin-top: auto;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .read-btn{
+    flex:1;
+    background: transparent;
+    border: 1.5px solid var(--accent, var(--purple));
+    color: #fff;
+    padding: 11px 16px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor:pointer;
+    position: relative;
+    overflow:hidden;
+    z-index: 1;
+    transition: color .35s ease, transform .2s ease;
+  }
+
+  .read-btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: var(--accent, var(--purple));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s ease;
+    z-index: -1;
+  }
+
+  .read-btn:hover{ color:#0b0c10; transform: translateY(-2px); }
+  .read-btn:hover::before{ transform: scaleX(1); }
+
+  .fav-btn{
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.03);
+    color: #fff;
+    cursor:pointer;
+    font-size: 1.1rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: all .3s ease;
+    flex-shrink: 0;
+  }
+  .fav-btn:hover{ border-color: var(--gold); color: var(--gold); transform: scale(1.08); }
+  .fav-btn.active{ background: var(--gold); color: #0b0c10; border-color: var(--gold); }
+
+  .no-results{
+    text-align:center;
+    padding: 60px 20px;
+    color: var(--text-soft);
+    display:none;
+    grid-column: 1/-1;
+  }
+
+  /* ===== CHARACTERS ===== */
+  .char-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .char-card{
+    text-align:center;
+    background: var(--bg-soft);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    padding: 30px 18px;
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .char-card.show{ animation: cardIn .6s ease forwards; }
+
+  .char-card:hover{
+    transform: translateY(-8px);
+    border-color: var(--accent, var(--crimson));
+    box-shadow: 0 18px 40px -10px rgba(0,0,0,0.6), 0 0 30px -8px var(--accent, var(--crimson));
+  }
+
+  .char-avatar{
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent, var(--purple)), #1a1b22);
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.05), 0 0 25px var(--accent, var(--purple));
+  }
+
+  .char-name{ font-weight: 700; margin-bottom: 6px; font-size: 1.05rem; }
+  .char-series{ font-size: 0.78rem; color: var(--accent, var(--purple)); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600; }
+  .char-desc{ font-size: 0.82rem; color: var(--text-soft); line-height: 1.5; }
+
+  .power-bar-wrap{
+    margin-top: 14px;
+    background: rgba(255,255,255,0.08);
+    height: 6px;
+    border-radius: 999px;
+    overflow:hidden;
+  }
+  .power-bar{
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent, var(--purple)), var(--gold));
+    width: 0%;
+    border-radius: 999px;
+    transition: width 1.4s cubic-bezier(.2,.8,.2,1);
+  }
+
+  /* ===== NEWS ===== */
+  .news-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .news-card{
+    background: var(--bg-soft);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 26px;
+    transition: all .35s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .news-card.show{ animation: cardIn .6s ease forwards; }
+
+  .news-card:hover{
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 35px -12px rgba(0,0,0,0.6), 0 0 25px -8px var(--gold);
+  }
+
+  .news-date{
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .news-title{
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .news-desc{ font-size: 0.88rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 14px; }
+
+  .news-tag{
+    display:inline-block;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(168,85,247,0.12);
+    color: var(--purple);
+    font-weight: 600;
+  }
+
+  /* ===== NEWSLETTER / CTA ===== */
+  .cta{
+    position: relative;
+    margin: 100px auto 0;
+    max-width: 1100px;
+    padding: 70px 40px;
+    text-align:center;
+    border-radius: 28px;
+    overflow:hidden;
+    background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(239,68,68,0.12), rgba(234,179,8,0.1));
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .cta h2{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 14px;
+  }
+  .cta p{ color: var(--text-soft); margin-bottom: 30px; max-width: 500px; margin-left:auto; margin-right:auto; }
+
+  .btn-primary{
+    display:inline-block;
+    background: linear-gradient(135deg, var(--purple), var(--crimson));
+    color:#fff;
+    padding: 15px 36px;
+    border-radius: 12px;
+    font-weight: 700;
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+    font-size: 1rem;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 12px 30px rgba(168,85,247,0.4); }
+
+  /* ===== FOOTER ===== */
+  footer{
+    margin-top: 100px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 50px 24px 30px;
+    text-align:center;
+  }
+  .footer-logo{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--purple), var(--crimson), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 14px;
+  }
+  .footer-links{
+    display:flex;
+    justify-content:center;
+    gap: 28px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+  .footer-links a{ color: var(--text-soft); transition: color .25s ease; }
+  .footer-links a:hover{ color: var(--purple); }
+
+  .footer-credit{ color: #6b6b78; font-size: 0.85rem; }
+  .footer-credit b{ color: var(--gold); }
+
+  /* ===== MODAL ===== */
+  .modal-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(5,5,8,0.8);
+    backdrop-filter: blur(6px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index: 1000;
+    opacity:0;
+    pointer-events:none;
+    transition: opacity .3s ease;
+    padding: 20px;
+  }
+  .modal-overlay.active{ opacity:1; pointer-events:auto; }
+
+  .modal-box{
+    background: linear-gradient(180deg, #16171e, #0c0d12);
+    border: 1px solid rgba(168,85,247,0.3);
+    border-radius: 22px;
+    max-width: 560px;
+    width: 100%;
+    padding: 38px;
+    position: relative;
+    transform: scale(0.9) translateY(20px);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6), 0 0 60px -10px rgba(168,85,247,0.3);
+  }
+  .modal-overlay.active .modal-box{ transform: scale(1) translateY(0); }
+
+  .modal-close{
+    position:absolute;
+    top: 18px; right: 18px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color:#fff;
+    cursor:pointer;
+    font-size: 1.1rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: all .25s ease;
+  }
+  .modal-close:hover{ background: var(--crimson); border-color: var(--crimson); transform: rotate(90deg); }
+
+  .modal-eyebrow{
+    color: var(--accent, var(--purple));
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .modal-title{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 2.1rem;
+    margin-bottom: 18px;
+  }
+  .modal-section{ margin-bottom: 18px; }
+  .modal-section h4{
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .modal-section p{ color: var(--text-soft); font-size: 0.92rem; line-height: 1.7; }
+
+  /* back to top */
+  .top-btn{
+    position: fixed;
+    bottom: 28px; right: 28px;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple), var(--crimson));
+    color:#fff;
+    border:none;
+    font-size: 1.2rem;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index: 90;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all .3s ease;
+    box-shadow: 0 10px 30px rgba(168,85,247,0.4);
+  }
+  .top-btn.show{ opacity:1; pointer-events:auto; transform: translateY(0); }
+  .top-btn:hover{ transform: translateY(-4px) scale(1.05); }
+
+  @media (max-width: 860px){
+    .nav-links{
+      position: fixed;
+      top:0; right:0;
+      height: 100vh;
+      width: 70%;
+      max-width: 320px;
+      background: #0d0e13;
+      flex-direction: column;
+      justify-content:center;
+      align-items:flex-start;
+      padding: 40px;
+      gap: 28px;
+      transform: translateX(100%);
+      transition: transform .4s ease;
+      border-left: 1px solid rgba(168,85,247,0.2);
+      z-index: 150;
+    }
+    .nav-links.open{ transform: translateX(0); }
+    .burger{ display:flex; }
+    .hero-stats{ gap: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#home" class="logo"><span class="spark"></span>HASSAN'S ANIME</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#featured">Featured Anime</a></li>
+      <li><a href="#characters">Top Characters</a></li>
+      <li><a href="#news">News</a></li>
+    </ul>
+    <button class="burger" id="burgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring r2"></div>
+  <div class="hero-ring r3"></div>
+  <div class="hero-content">
+    <span class="hero-badge">⚡ Hosted by Hassan</span>
+    <h1 class="hero-title">Step Into The <span class="glow-word">Ultimate Anime Realm</span></h1>
+    <p class="hero-sub">Curated analysis, character power breakdowns, and story sagas hosted by Hassan. Dive into cursed energy, Saiyan transformations, Devil Fruits, and the Shadow Monarch's domain.</p>
+
+    <form class="search-box" id="searchForm">
+      <input type="text" id="searchInput" placeholder="Search Jujutsu Kaisen, One Piece, Solo Leveling..." autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="hero-stats">
+      <div class="stat"><div class="num">6+</div><div class="label">Anime Breakdowns</div></div>
+      <div class="stat"><div class="num">12+</div><div class="label">Top Characters</div></div>
+      <div class="stat"><div class="num">100K+</div><div class="label">Fans Worldwide</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="label">Fresh News</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="featured">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Showcase</span>
+      <h2 class="section-title">Featured <span>Anime</span> Sagas</h2>
+      <p class="section-desc">Deep dives into the power systems, lore, and legendary battles that define the biggest anime universes.</p>
+    </div>
+
+    <div class="grid" id="animeGrid"></div>
+    <div class="no-results" id="noResults">No anime found matching your search. Try "Gojo", "Haki", or "Titan".</div>
+  </div>
+</section>
+
+<section class="section-pad" id="characters" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Legends</span>
+      <h2 class="section-title">Top <span>Characters</span> Ranked</h2>
+      <p class="section-desc">The most powerful and iconic characters, ranked by raw power, influence, and fan impact.</p>
+    </div>
+    <div class="char-grid" id="charGrid"></div>
+  </div>
+</section>
+
+<section class="section-pad" id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Latest</span>
+      <h2 class="section-title">Anime <span>News</span> & Updates</h2>
+      <p class="section-desc">Stay ahead with the latest announcements, season drops, and theory discussions.</p>
+    </div>
+    <div class="news-grid" id="newsGrid"></div>
+  </div>
+
+  <div class="cta">
+    <h2>Never Miss A Saga</h2>
+    <p>Subscribe to get instant breakdowns the moment a new episode drops. Join thousands of anime fans in Hassan's community.</p>
+    <button class="btn-primary" id="subscribeBtn">Join The Realm</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">HASSAN'S ANIME</div>
+  <ul class="footer-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#featured">Featured Anime</a></li>
+    <li><a href="#characters">Top Characters</a></li>
+    <li><a href="#news">News</a></li>
+  </ul>
+  <p class="footer-credit">Curated with passion by <b>Hassan</b> | Hassan's Anime Hub 2026</p>
+</footer>
+
+<button class="top-btn" id="topBtn" aria-label="Back to top">↑</button>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  /* ============ DATA ============ */
+  const animeData = [
+    {
+      title: "Jujutsu Kaisen",
+      year: "2020",
+      accent: "#a855f7",
+      img: "https://images.pexels.com/photos/11138002/pexels-photo-11138002.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1100",
+      genres: ["Action", "Supernatural", "Shonen", "Dark Fantasy"],
+      desc: "Yuji Itadori merges with a cursed finger, entering a brutal world of sorcerers and curses. As Gojo Satoru clashes with the king of curses, Sukuna, the battle for dominance redefines what power truly means.",
+      power: "Cursed Energy",
+      powerDetail: "Cursed Energy is harnessed from negative human emotion. Sorcerers channel it into Domain Expansions, Cursed Techniques, and Black Flash strikes — with Gojo's Limitless and Sukuna's Malevolent Shrine standing as the pinnacle of this system.",
+      focus: "Focus: Gojo vs Sukuna, the Cursed Energy system, and Domain Expansions.",
+      synopsis: "A gripping saga exploring the Culling Game, the Shibuya Incident, and the eternal rivalry between the strongest sorcerer and the King of Curses reborn."
+    },
+    {
+      title: "Dragon Ball Super",
+      year: "2015",
+      accent: "#eab308",
+      img: "https://images.pexels.com/photos/35982172/pexels-photo-35982172.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1100",
+      genres: ["Action", "Adventure", "Shonen", "Martial Arts"],
+      desc: "Goku and Vegeta push past Super Saiyan limits, awakening Ultra Instinct and Ultra Ego. From the Tournament of Power to battles against gods of destruction, the Saiyan legacy keeps evolving.",
+      power: "Ki & Transformations",
+      powerDetail: "Ki is life-force energy refined through training, meditation, and battle. Transformations — Super Saiyan, Super Saiyan Blue, Ultra Instinct — multiply a warrior's Ki output exponentially, granting godlike speed and devastating energy attacks like the Kamehameha.",
+      focus: "Focus: Saiyan transformations and the awakening of Ultra Instinct.",
+      synopsis: "Follow the Saiyan bloodline as Goku chases the ultimate form beyond mortal limits, facing universal threats that challenge the very concept of power."
+    },
+    {
+      title: "Attack on Titan",
+      year: "2013",
+      accent: "#ef4444",
+      img: "https://images.pexels.com/photos/28134866/pexels-photo-28134866.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1100",
+      genres: ["Action", "Dark Fantasy", "Drama", "Mystery"],
+      desc: "Humanity hides behind towering walls to survive man-eating Titans. As Eren Yeager uncovers the dark truth of Eldian history, the line between hero and monster dissolves completely.",
+      power: "Titan Shifting",
+      powerDetail: "Titan Shifters inherit one of Nine Titans, each granting unique abilities — the Attack Titan's future memories, the Founding Titan's reality-altering command over Subjects of Ymir, and the Colossal Titan's catastrophic scale.",
+      focus: "Focus: The Titans' origin and the hidden history of the Eldian people.",
+      synopsis: "A war epic spanning generations, exposing the cycle of hatred between Marley and Eldia, and Eren's final, world-shaking choice."
+    },
+    {
+      title: "Demon Slayer",
+      year: "2019",
+      accent: "#ef4444",
+      img: "https://images.pexels.com/photos/34521394/pexels-photo-34521394.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1100",
+      genres: ["Action", "Supernatural", "Historical", "Shonen"],
+      desc: "Tanjiro Kamado becomes a demon slayer to cure his sister Nezuko and avenge his family. Wielding Breathing Styles passed down through generations, he rises through the ranks of the Demon Slayer Corps.",
+      power: "Breathing Styles",
+      powerDetail: "Breathing Styles are swordsmanship techniques built on enhanced respiration, mimicking elements like Water, Flame, Thunder, and the legendary Sun Breathing — the original technique all others descend from.",
+      focus: "Focus: Mastery of Breathing Styles and Demon Slayer Marks.",
+      synopsis: "A tale of grief turned resolve, culminating in the Hashira's final stand against Muzan Kibutsuji, the progenitor of all demons."
+    },
+    {
+      title: "Solo Leveling",
+      year: "2024",
+      accent: "#a855f7",
+      img: "https://images.pexels.com/photos/333850/pexels-photo-333850.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1100",
+      genres: ["Action", "Fantasy", "Supernatural", "Adventure"],
+      desc: "Sung Jinwoo, the weakest hunter alive, gains a mysterious leveling system after a near-death dungeon raid. He rises from E-rank to become the feared Shadow Monarch, commanding an army of the undead.",
+      power: "Shadow Monarch Powers",
+      powerDetail: "The Shadow Monarch commands the Rulers' authority to 'Arise' — resurrecting defeated enemies as loyal shadow soldiers. Combined with unlimited stat growth, this grants Jinwoo an ever-expanding undead army and monarch-tier combat dominance.",
+      focus: "Focus: The System's leveling mechanics and Shadow Monarch authority.",
+      synopsis: "A rags-to-power saga following the sole survivor of the Double Dungeon as he arises to challenge Rulers and Monarchs alike."
+    },
+    {
+      title: "One Piece",
+      year: "1999",
+      accent: "#eab308",
+      img: "https://images.pexels.com/photos/38427508/pexels-photo-38427508.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1100",
+      genres: ["Action", "Adventure", "Comedy", "Shonen"],
+      desc: "Monkey D. Luffy sails the Grand Line with the Straw Hat Pirates, chasing the legendary treasure 'One Piece.' Devil Fruits grant superhuman abilities, while Haki unlocks the limits of the human body and will.",
+      power: "Devil Fruits & Haki",
+      powerDetail: "Devil Fruits grant singular supernatural powers at the cost of swimming ability — from Luffy's rubber body to logia-class elemental control. Haki is an innate life-force split into Observation, Armament, and the rare Conqueror's Haki, allowing warriors to sense, strengthen, and overpower others' will.",
+      focus: "Focus: Devil Fruit awakening and the three forms of Haki.",
+      synopsis: "An ever-expanding world of pirates, revolutionaries, and ancient weapons, as Luffy pursues his dream of becoming the Pirate King."
+    }
+  ];
+
+  const charData = [
+    { name:"Satoru Gojo", series:"Jujutsu Kaisen", accent:"#a855f7", power:98, desc:"The strongest sorcerer, master of Limitless and Domain Expansion: Unlimited Void." },
+    { name:"Sukuna", series:"Jujutsu Kaisen", accent:"#ef4444", power:99, desc:"King of Curses wielding Malevolent Shrine and the Dismantle/Cleave techniques." },
+    { name:"Goku", series:"Dragon Ball Super", accent:"#eab308", power:97, desc:"Saiyan warrior who mastered Ultra Instinct, moving beyond conscious thought." },
+    { name:"Vegeta", series:"Dragon Ball Super", accent:"#eab308", power:95, desc:"Prince of all Saiyans, creator of Ultra Ego — power fueled by destruction." },
+    { name:"Eren Yeager", series:"Attack on Titan", accent:"#ef4444", power:93, desc:"Founding Titan wielder capable of rewriting Eldian history and memory." },
+    { name:"Levi Ackerman", series:"Attack on Titan", accent:"#ef4444", power:90, desc:"Humanity's strongest soldier, unmatched in Titan combat without a shifter form." },
+    { name:"Tanjiro Kamado", series:"Demon Slayer", accent:"#ef4444", power:88, desc:"Wielder of Sun Breathing and the Demon Slayer Mark, Nezuko's devoted brother." },
+    { name:"Muzan Kibutsuji", series:"Demon Slayer", accent:"#a855f7", power:94, desc:"Progenitor of all demons, nearly immortal with endless regeneration." },
+    { name:"Sung Jinwoo", series:"Solo Leveling", accent:"#a855f7", power:96, desc:"The Shadow Monarch, commanding an undead army with limitless growth potential." },
+    { name:"Thomas Andre", series:"Solo Leveling", accent:"#a855f7", power:92, desc:"National Level Hunter known as the strongest human before the Monarchs' arrival." },
+    { name:"Monkey D. Luffy", series:"One Piece", accent:"#eab308", power:91, desc:"Gum-Gum Fruit user and Conqueror's Haki wielder, future Pirate King." },
+    { name:"Kaido", series:"One Piece", accent:"#eab308", power:93, desc:"Fabled strongest creature alive, the Azure Dragon of the Beast Pirates." }
+  ];
+
+  const newsData = [
+    { date:"Jan 2026", tag:"Jujutsu Kaisen", title:"Culling Game Arc Deep-Dive: Every Domain Expansion Ranked", desc:"Hassan breaks down the strongest Domain Expansions revealed so far and what they mean for the final arc." },
+    { date:"Jan 2026", tag:"Solo Leveling", title:"Season 2 Theories: Will Jinwoo Face the Rulers?", desc:"Analyzing leaks and manhwa hints about the next chapter of the Shadow Monarch's war." },
+    { date:"Dec 2025", tag:"One Piece", title:"Egghead Arc Aftermath: Haki Awakening Explained", desc:"A full breakdown of Observation, Armament, and Conqueror's Haki evolution in the final saga." },
+    { date:"Dec 2025", tag:"Dragon Ball", title:"Ultra Instinct vs Ultra Ego: Which Form Truly Wins?", desc:"Hassan compares Goku and Vegeta's signature transformations in a power-scaling special." },
+    { date:"Nov 2025", tag:"Demon Slayer", title:"Infinity Castle Movie: Breathing Styles Tier List", desc:"Ranking every Hashira's Breathing Style ahead of the final theatrical trilogy." },
+    { date:"Nov 2025", tag:"Attack on Titan", title:"Eldian History Retold: The Truth Behind the Walls", desc:"Revisiting the hidden lore of Ymir Fritz and the origin of the Nine Titans." }
+  ];
+
+  /* ============ RENDER ANIME CARDS ============ */
+  const animeGrid = document.getElementById('animeGrid');
+
+  function renderAnime(list){
+    animeGrid.innerHTML = '';
+    document.getElementById('noResults').style.display = list.length ? 'none' : 'block';
+    list.forEach((a, i) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.setProperty('--accent', a.accent);
+      card.style.transitionDelay = (i * 0.06) + 's';
+      card.innerHTML = `
+        <div class="card-img-wrap">
+          <img src="${a.img}" alt="${a.title}" loading="lazy">
+          <span class="year-badge">${a.year}</span>
+          <span class="power-badge">${a.power}</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${a.title}</h3>
+          <div class="genres">${a.genres.map(g => `<span class="genre-tag">${g}</span>`).join('')}</div>
+          <p class="card-desc">${a.desc}</p>
+          <div class="power-system"><b>${a.power}:</b> ${a.focus}</div>
+          <div class="card-footer">
+            <button class="read-btn" data-idx="${i}">Read Breakdown →</button>
+            <button class="fav-btn" aria-label="Save">♥</button>
+          </div>
+        </div>
+      `;
+      animeGrid.appendChild(card);
+    });
+    observeCards();
+    attachCardEvents(list);
+  }
+
+  function attachCardEvents(list){
+    document.querySelectorAll('.read-btn').forEach(btn => {
+      btn.addEventListener('click', () => openModal(list[btn.dataset.idx]));
+    });
+    document.querySelectorAll('.fav-btn').forEach(btn => {
+      btn.addEventListener('click', () => btn.classList.toggle('active'));
+    });
+  }
+
+  renderAnime(animeData);
+
+  /* ============ RENDER CHARACTERS ============ */
+  const charGrid = document.getElementById('charGrid');
+  charData.forEach((c, i) => {
+    const el = document.createElement('div');
+    el.className = 'char-card';
+    el.style.setProperty('--accent', c.accent);
+    el.style.transitionDelay = (i * 0.05) + 's';
+    el.innerHTML = `
+      <div class="char-avatar">${c.name.split(' ').map(n=>n[0]).join('').slice(0,2)}</div>
+      <div class="char-name">${c.name}</div>
+      <div class="char-series">${c.series}</div>
+      <p class="char-desc">${c.desc}</p>
+      <div class="power-bar-wrap"><div class="power-bar" data-power="${c.power}"></div></div>
+    `;
+    charGrid.appendChild(el);
+  });
+
+  /* ============ RENDER NEWS ============ */
+  const newsGrid = document.getElementById('newsGrid');
+  newsData.forEach((n, i) => {
+    const el = document.createElement('div');
+    el.className = 'news-card';
+    el.style.transitionDelay = (i * 0.05) + 's';
+    el.innerHTML = `
+      <div class="news-date">${n.date}</div>
+      <h3 class="news-title">${n.title}</h3>
+      <p class="news-desc">${n.desc}</p>
+      <span class="news-tag">${n.tag}</span>
+    `;
+    newsGrid.appendChild(el);
+  });
+
+  /* ============ INTERSECTION OBSERVER FOR ANIMATIONS ============ */
+  function observeCards(){
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          const bar = entry.target.querySelector('.power-bar');
+          if(bar) bar.style.width = bar.dataset.power + '%';
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.card:not(.show), .char-card:not(.show), .news-card:not(.show)').forEach(el => obs.observe(el));
+  }
+  observeCards();
+
+  /* ============ SEARCH ============ */
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+
+  function runSearch(){
+    const q = searchInput.value.trim().toLowerCase();
+    if(!q){ renderAnime(animeData); return; }
+    const filtered = animeData.filter(a =>
+      a.title.toLowerCase().includes(q) ||
+      a.power.toLowerCase().includes(q) ||
+      a.desc.toLowerCase().includes(q) ||
+      a.genres.some(g => g.toLowerCase().includes(q)) ||
+      a.focus.toLowerCase().includes(q)
+    );
+    renderAnime(filtered);
+    document.getElementById('featured').scrollIntoView({ behavior:'smooth' });
+  }
+
+  searchForm.addEventListener('submit', e => { e.preventDefault(); runSearch(); });
+  searchInput.addEventListener('input', () => { if(searchInput.value.trim() === '') renderAnime(animeData); });
+
+  /* ============ MODAL ============ */
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalContent = document.getElementById('modalContent');
+  const modalClose = document.getElementById('modalClose');
+  const modalBox = document.getElementById('modalBox');
+
+  function openModal(a){
+    modalBox.style.setProperty('--accent', a.accent);
+    modalContent.innerHTML = `
+      <div class="modal-eyebrow">${a.year} • ${a.genres.join(' / ')}</div>
+      <h2 class="modal-title">${a.title}</h2>
+      <div class="modal-section">
+        <h4>Synopsis</h4>
+        <p>${a.synopsis}</p>
+      </div>
+      <div class="modal-section">
+        <h4>Power System — ${a.power}</h4>
+        <p>${a.powerDetail}</p>
+      </div>
+      <div class="modal-section">
+        <h4>Breakdown Focus</h4>
+        <p>${a.focus}</p>
+      </div>
+    `;
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', e => { if(e.target === modalOverlay) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+  /* ============ NAV / BURGER ============ */
+  const burgerBtn = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burgerBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    burgerBtn.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  /* ============ BACK TO TOP ============ */
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('show', window.scrollY > 500);
+  });
+  topBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+  /* ============ SUBSCRIBE BUTTON ============ */
+  document.getElementById('subscribeBtn').addEventListener('click', function(){
+    this.textContent = 'Welcome to the Realm! ⚡';
+    this.style.background = 'linear-gradient(135deg, var(--gold), var(--crimson))';
+    setTimeout(() => {
+      this.textContent = 'Join The Realm';
+      this.style.background = '';
+    }, 2500);
+  });
+</script>
+</body>
+</html>
